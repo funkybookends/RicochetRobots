@@ -134,33 +134,6 @@ public class StateTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
-    /**
-     * Test of getParent method, of class State.
-     */
-    @Test
-    public void testGetParent() {
-        System.out.println("getParent");
-        State instance = null;
-        State expResult = null;
-        State result = instance.getParent();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getMoveNumber method, of class State.
-     */
-    @Test
-    public void testGetMoveNumber() {
-        System.out.println("getMoveNumber");
-        State instance = null;
-        int expResult = 0;
-        int result = instance.getMoveNumber();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    
     
 }
