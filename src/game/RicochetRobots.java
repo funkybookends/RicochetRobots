@@ -20,9 +20,8 @@ public class RicochetRobots {
         
     public RicochetRobots(FileInputStream fis){
         char[][] charBoard = createCharBoard(fis);
-        int insize = charBoard.length*2+1;
-        this.board = new Board(charBoard, insize);
-        state = new State(charBoard, insize);
+        this.board = new Board(charBoard);
+        state = new State(charBoard);
     }
     
     public String toString(){
