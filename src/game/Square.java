@@ -25,4 +25,14 @@ public class Square {
     public String toString(){
         return "("+row+","+col+")";
     }
+    
+    public boolean equals(Object o){
+        try {
+            Square other = (Square) o;
+            return this.row == other.row && this.col == other.col;
+        }
+        catch (Exception e) {
+            return false;
+        }
+    }
 }
