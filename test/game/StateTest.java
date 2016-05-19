@@ -37,19 +37,7 @@ public class StateTest {
     @After
     public void tearDown() {
     }
-
-    /**
-     * Test of setStartState method, of class State.
-     */
-    @Test
-    public void testSetStartState() {
-        System.out.println("setStartState");
-        State instance = null;
-        instance.setStartState();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+    
     /**
      * Test of findRobot method, of class State.
      */
