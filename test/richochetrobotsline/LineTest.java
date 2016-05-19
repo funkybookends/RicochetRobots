@@ -39,27 +39,5 @@ public class LineTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of move method, of class Line.
-     */
-    @Test
-    public void testMove() {
-        System.out.println("move");
-        Line line = new Line();
-        line.barriers = new ArrayList<Integer>();
-        line.barriers.add(0);
-        line.barriers.add(5);
-        
-        ArrayList<Integer> robots = new ArrayList<>();
-        
-        Integer result = line.move(robots, 3, true);
-        assertEquals(4,result.intValue());
-        result = line.move(robots, 4, false);
-        assertEquals(0,result.intValue());
-        result = line.move(robots, 4, true);
-        assertEquals(4,result.intValue());
-        result = line.move(robots, 0, false);
-        assertEquals(0,result.intValue());
-    }
     
 }
