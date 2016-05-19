@@ -37,7 +37,7 @@ public class State implements Iterable<Robot>{
      * @param insize the size of the inboard
      */
     protected State(char[][] board){
-        int insize = board.length * 2 + 1 ;
+        int insize = board.length;
         robots = new TreeMap<>();
         for (int i = 1; i < insize - 1; i+=2){
             for (int j =1; j < insize -1; j +=2){
