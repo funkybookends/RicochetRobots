@@ -14,7 +14,7 @@ import java.util.TreeMap;
  *
  * @author caspar
  */
-public class State implements Iterable<Robot>{
+public class State implements Iterable<Robot>, Comparable<State>{
 
     /**
      * The map of robots
@@ -30,6 +30,8 @@ public class State implements Iterable<Robot>{
     private int moveNumber = 0;    
     private Robot movedRobot;
     private Direction movedDir;
+    
+    private static final int moveBonus = 2;
     
     /**
      * Constructor parses a board and finds the robot positions.
@@ -141,6 +143,12 @@ public class State implements Iterable<Robot>{
 
     public Direction getMovedDir() {
         return this.movedDir;
+    }
+
+    @Override
+    public int compareTo(State o) {
+        return this.moveNumber - o.moveNumber;
+        
     }
         
 }    
