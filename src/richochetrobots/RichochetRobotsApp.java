@@ -19,7 +19,9 @@ import java.io.FileNotFoundException;
  */
 public class RichochetRobotsApp {
     
-    public static RicochetRobots getGameFromFile(String fileName) throws FileNotFoundException{
+    public static RicochetRobots getGameFromFile(String fileName)
+            throws FileNotFoundException
+    {
         File f = new File(fileName);
         FileInputStream in = new FileInputStream(f);
         return new RicochetRobots(in);
