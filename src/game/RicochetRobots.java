@@ -19,19 +19,9 @@ public class RicochetRobots {
     private State state; // State of game i.e. where robots are
         
     public RicochetRobots(FileInputStream fis){
-        Scanner in = new Scanner(fis);
-        String sline = in.nextLine();
-        int insize = sline.length();
-        int boardSize = insize/2;
-        char charBoard[][] = new char[insize][insize];
-        for (int i = 0; i < insize; i++){
-            for (int j = 0; j< insize; j++){
-                charBoard[i][j] = sline.charAt(j);
-            }
-            if (in.hasNextLine()) sline = in.nextLine();
-        }
+        char[][] charBoard = createCharBoard(fis);
+        int insize = charBoard.length*2+1;
         this.board = new Board(charBoard, insize);
-       
         state = new State(charBoard, insize);
     }
     
@@ -49,6 +39,21 @@ public class RicochetRobots {
     
     public void setState(State newState){
         this.state = newState;
+    }
+    
+    public static char[][] createCharBoard(FileInputStream fis){
+        Scanner in = new Scanner(fis);
+        String sline = in.nextLine();
+        int insize = sline.length();
+        int boardSize = insize/2;
+        char charBoard[][] = new char[insize][insize];
+        for (int i = 0; i < insize; i++){
+            for (int j = 0; j< insize; j++){
+                charBoard[i][j] = sline.charAt(j);
+            }
+            if (in.hasNextLine()) sline = in.nextLine();
+        }
+        return charBoard;
     }
    
 }
