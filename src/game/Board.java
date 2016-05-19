@@ -30,7 +30,8 @@ public class Board {
      * @param board the charBoard to parse
      * @param insize the size of the board
      */
-    protected Board(char[][] board, int insize){
+    protected Board(char[][] board){
+        int insize = board.length * 2 + 1;
         this.boardSize = insize/2;
         rows = new Line[boardSize];
         cols = new Line[boardSize];
