@@ -5,6 +5,9 @@
  */
 package game;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Iterator;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -87,15 +90,34 @@ public class StateTest {
     @Test
     public void testGetDecendant() {
         System.out.println("getDecendant");
-        Board board = null;
-        Robot robot = null;
-        Direction dir = null;
-        State instance = null;
-        State expResult = null;
-        State result = instance.getDecendant(board, robot, dir);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        try {
+            char[][] charBoard = RicochetRobots.createCharBoard(
+                    new FileInputStream( new File("board2.txt"))
+                );
+        
+            Board board = new Board(charBoard);
+            Robot robot = Robot.RED;
+            Direction dir = Direction.NORTH;
+            State instance = new State(charBoard);
+            instance.setStartState();
+            State result = instance.getDecendant(board, robot, dir);
+            
+            assertEquals(1, result.getMoveNumber());
+            assertEquals(robot, result.getMovedRobot());
+            assertEquals(dir, result.getMovedDir());
+            assertEquals(instance, result.getParent());
+            
+            Square exptdGreenLoc = new Square(0, 2);
+            Square exptdRedLoc = new Square(0, 3);
+            
+            assertEquals(exptdRedLoc, result.findRobot(Robot.RED));
+            assertEquals(exptdGreenLoc, result.findRobot(Robot.GREEN));
+
+        }
+        catch (FileNotFoundException e){
+            fail("Could not open file");
+            return;
+        }
     }
 
     /**
