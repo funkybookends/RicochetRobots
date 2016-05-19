@@ -25,18 +25,12 @@ public class State implements Iterable<Robot>{
     private TreeMap<Robot, Square> robots;
     
     protected State parent;
-    protected int moveNumber = 0;
     
+    //notes about it's parent
+    protected int moveNumber = 0;    
     protected Robot movedRobot;
     protected Direction movedDir;
     
-    public void setStartState(){
-        parent = null;
-        moveNumber = 0;
-        movedRobot = null;
-        movedDir = null;
-    }
-
     /**
      * Constructor parses a board and finds the robot positions.
      * @param board the board to parse
@@ -53,6 +47,13 @@ public class State implements Iterable<Robot>{
                 }
             }
         }
+    }
+    
+    public void setStartState(){
+        parent = null;
+        moveNumber = 0;
+        movedRobot = null;
+        movedDir = null;
     }
     
     private State(TreeMap<Robot, Square> robots){
