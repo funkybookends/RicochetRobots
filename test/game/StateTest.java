@@ -41,48 +41,6 @@ public class StateTest {
     public void tearDown() {
     }
     
-    /**
-     * Test of findRobot method, of class State.
-     */
-    @Test
-    public void testFindRobot() {
-        System.out.println("findRobot");
-        Robot robot = null;
-        State instance = null;
-        Square expResult = null;
-        Square result = instance.findRobot(robot);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of iterator method, of class State.
-     */
-    @Test
-    public void testIterator() {
-        System.out.println("iterator");
-        State instance = null;
-        Iterator<Robot> expResult = null;
-        Iterator<Robot> result = instance.iterator();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of toString method, of class State.
-     */
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        State instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of getDecendant method, of class State.
@@ -102,16 +60,26 @@ public class StateTest {
             instance.setStartState();
             State result = instance.getDecendant(board, robot, dir);
             
+            //check setStartState
             assertEquals(1, result.getMoveNumber());
             assertEquals(robot, result.getMovedRobot());
             assertEquals(dir, result.getMovedDir());
             assertEquals(instance, result.getParent());
             
+            //check first move
             Square exptdGreenLoc = new Square(0, 2);
-            Square exptdRedLoc = new Square(0, 3);
-            
+            Square exptdRedLoc = new Square(0, 3);            
             assertEquals(exptdRedLoc, result.findRobot(Robot.RED));
             assertEquals(exptdGreenLoc, result.findRobot(Robot.GREEN));
+            
+            
+            //check same move results in same locs
+            result = result.getDecendant(board, robot, dir);
+            assertEquals(exptdRedLoc, result.findRobot(Robot.RED));
+            assertEquals(exptdGreenLoc, result.findRobot(Robot.GREEN));            
+            
+            
+            
 
         }
         catch (FileNotFoundException e){
