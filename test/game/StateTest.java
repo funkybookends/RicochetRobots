@@ -120,20 +120,6 @@ public class StateTest {
         }
     }
 
-
-    /**
-     * Test of getInstructions method, of class State.
-     */
-    @Test
-    public void testGetInstructions() {
-        System.out.println("getInstructions");
-        State instance = null;
-        String expResult = "";
-        String result = instance.getInstructions();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
     
     
 }
