@@ -138,5 +138,9 @@ public class State implements Iterable<Robot>{
     public Robot getMovedRobot() {
         return this.movedRobot;
     }
+
+    public Direction getMovedDir() {
+        return this.movedDir;
+    }
         
 }    
