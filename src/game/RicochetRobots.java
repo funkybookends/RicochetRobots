@@ -46,5 +46,9 @@ public class RicochetRobots {
     public Solution solve(Robot r, Target t){
         return new Solver(board, state, r, t).getSolution();
     }
+    
+    public void setState(State newState){
+        this.state = newState;
+    }
    
 }
