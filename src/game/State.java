@@ -24,12 +24,12 @@ public class State implements Iterable<Robot>{
      */
     private TreeMap<Robot, Square> robots;
     
-    protected State parent;
+    private State parent;
     
     //notes about it's parent
-    protected int moveNumber = 0;    
-    protected Robot movedRobot;
-    protected Direction movedDir;
+    private int moveNumber = 0;    
+    private Robot movedRobot;
+    private Direction movedDir;
     
     /**
      * Constructor parses a board and finds the robot positions.
@@ -133,6 +133,10 @@ public class State implements Iterable<Robot>{
 
     public int getMoveNumber() {
         return this.moveNumber;
+    }
+
+    public Robot getMovedRobot() {
+        return this.movedRobot;
     }
         
 }    
