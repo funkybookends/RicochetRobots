@@ -18,20 +18,28 @@ import java.io.FileNotFoundException;
  * @author caspar
  */
 public class RichochetRobotsLine {
+    
+    public static RicochetRobots getGameFromFile(String fileName) throws FileNotFoundException{
+        File f = new File(fileName);
+        FileInputStream in = new FileInputStream(f);
+        return new RicochetRobots(in);
+    }
+    
+    public static void test2() {
+        try {            
+            RicochetRobots b = getGameFromFile("board2.txt");
+            Solution sol = b.solve(Robot.RED, Target.getByLabel('a'));
+            System.out.println(sol.toString());
+        }
+        catch (FileNotFoundException e){
+            System.out.println("Fail - Could not load file - " + e.getMessage());
+        }
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        
-        File f = new File("board2.txt");
-        try {
-            FileInputStream in = new FileInputStream(f);
-            RicochetRobots b = new RicochetRobots(in);
-            Solution sol = b.solve(Robot.RED, Target.getByLabel('a'));
-            System.out.println(sol.toString());
-            
-        } catch (FileNotFoundException ex) {}
+        test2();
     }
 }
