@@ -34,7 +34,8 @@ public class Line {
      * @return the landed upon position
      */
     protected Integer move(ArrayList<Integer> robotBarriers, 
-                Integer origin, boolean increasing){
+                Integer origin, boolean increasing)
+    {
             ArrayList<Integer> allBarriers = new ArrayList();
             allBarriers.addAll(this.barriers);
             allBarriers.addAll(robotBarriers);
