@@ -36,7 +36,6 @@ public class State implements Iterable<Robot>, Comparable<State>{
     /**
      * Constructor parses a board and finds the robot positions.
      * @param board the board to parse
-     * @param insize the size of the inboard
      */
     protected State(char[][] board){
         int insize = board.length;
