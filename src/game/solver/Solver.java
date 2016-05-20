@@ -43,7 +43,7 @@ public class Solver {
         queue.add(startState);
         
         State frontier;
-        int max = 1000;
+        int max = 2<<16;
         int cur = 0;
         
         do {
