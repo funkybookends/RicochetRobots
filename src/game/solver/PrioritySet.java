@@ -48,6 +48,8 @@ class PrioritySet<Key> {
         Key r = heap.get(0);
         heap.set(0, heap.remove(heap.size()-1));
         siftDown();
+        print();
+        test();
         return r;
     }
     
@@ -57,21 +59,23 @@ class PrioritySet<Key> {
         while (l < heap.size()){
             int max=l, r=l+1;
             if (r < heap.size()) {
-                if (aGTb(r, l)){
+                if (!aGTb(r, l)){
                     max++;
                 }
             }
-            if (aGTb(max, k)){
+            if (!aGTb(max, k)){
                 Key temp = heap.get(k);
                 heap.set(k, heap.get(max));
                 heap.set(max, temp);
                 k = max;
                 l = 2*k +1;
+                System.out.println("swapped");
             }
             else {
                 break;
             }
         }
+        test();
     }
     
     private void siftUp(int k){
@@ -80,7 +84,7 @@ class PrioritySet<Key> {
             Key item = heap.get(k);
             Key parent = heap.get(p);
             
-            if (aGTb(item, parent)){
+            if (!aGTb(item, parent)){
                 heap.set(k, parent);
                 heap.set(p, item);
                 
@@ -90,6 +94,7 @@ class PrioritySet<Key> {
                 break;
             }
         }
+        test();
     }
     
     private void siftUp(){
@@ -102,6 +107,25 @@ class PrioritySet<Key> {
     
     private boolean aGTb(int a, int b){
         return entries.get(heap.get(a)) > entries.get(heap.get(b));
+    }
+    
+    private void print(){
+        int i = 0;
+        for (Key k : heap){
+            System.out.println(i + " " + k.toString() + " - " + entries.get(k));
+            i++;
+        }
+        System.out.println();
+    }
+    
+    private void test(){
+        for (int i = 0; i<heap.size(); i ++){
+            int l = (2*i) + 1;
+            int r = (2*2) + 2;
+            assert(aGTb(l, i));
+            assert(aGTb(r, i));
+        }
+        System.out.println("Test passed");
     }
     
 }
