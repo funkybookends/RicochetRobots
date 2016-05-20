@@ -120,7 +120,7 @@ public class State implements Iterable<Robot>, Comparable<State>{
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 67 * hash + Objects.hashCode(toString());
+        hash = 67 * hash + Objects.hashCode(locs());
         return hash;
     }
     
