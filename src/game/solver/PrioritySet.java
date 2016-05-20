@@ -48,8 +48,6 @@ class PrioritySet<Key> {
         Key r = heap.get(0);
         heap.set(0, heap.remove(heap.size()-1));
         siftDown();
-        print();
-        test();
         return r;
     }
     
