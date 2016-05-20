@@ -37,11 +37,34 @@ public class RichochetRobotsApp {
             System.out.println("Fail - Could not load file - " + e.getMessage());
         }
     }
+    
+    public static void test3() {
+        try {
+            RicochetRobots b = getGameFromFile("board4.txt");
+            Solution sol = b.solve(Robot.RED, Target.getByLabel('e'));
+            System.out.println(sol.toString());
+        }
+        catch (FileNotFoundException e){
+            System.out.println("Fail - Could not load file - " + e.getMessage());
+        }        
+    }
+    
+    //Big 22 move solution, will not solve without heuristics
+    public static void test22() {
+        try {
+            RicochetRobots b = getGameFromFile("board22.txt");
+            Solution sol = b.solve(Robot.RED, Target.getByLabel('a'));
+            System.out.println(sol.toString());
+        }
+        catch (FileNotFoundException e){
+            System.out.println("Fail - Could not load file - " + e.getMessage());
+        }        
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        test2();
+        test3();
     }
 }
