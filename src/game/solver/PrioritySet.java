@@ -59,11 +59,11 @@ class PrioritySet<Key> {
         while (l < heap.size()){
             int max=l, r=l+1;
             if (r < heap.size()) {
-                if (!aGTb(r, l)){
+                if (aGTb(l, r)){
                     max++;
                 }
             }
-            if (!aGTb(max, k)){
+            if (aGTb(k, max)){
                 Key temp = heap.get(k);
                 heap.set(k, heap.get(max));
                 heap.set(max, temp);
