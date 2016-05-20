@@ -57,11 +57,11 @@ class PrioritySet<Key> {
         while (l < heap.size()){
             int max=l, r=l+1;
             if (r < heap.size()) {
-                if (entries.get(heap.get(r)) > entries.get(heap.get(l))){
+                if (aGTb(r, l)){
                     max++;
                 }
             }
-            if (entries.get(heap.get(k)) < entries.get(heap.get(max))){
+            if (aGTb(max, k)){
                 Key temp = heap.get(k);
                 heap.set(k, heap.get(max));
                 heap.set(max, temp);
@@ -80,7 +80,7 @@ class PrioritySet<Key> {
             Key item = heap.get(k);
             Key parent = heap.get(p);
             
-            if (entries.get(item) > entries.get(parent)){
+            if (aGTb(item, parent)){
                 heap.set(k, parent);
                 heap.set(p, item);
                 
@@ -94,6 +94,14 @@ class PrioritySet<Key> {
     
     private void siftUp(){
         siftUp(heap.size()-1);
+    }
+    
+    private boolean aGTb(Key a, Key b){
+        return entries.get(a) > entries.get(b);
+    }
+    
+    private boolean aGTb(int a, int b){
+        return entries.get(heap.get(a)) > entries.get(heap.get(b));
     }
     
 }
