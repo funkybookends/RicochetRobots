@@ -8,6 +8,7 @@ package game.solver;
 import game.Board;
 import game.Direction;
 import game.Robot;
+import game.Square;
 import game.State;
 import game.Target;
 
@@ -41,30 +42,37 @@ public class Solver {
         startState.setStartState();
         queue.add(startState);
         
-        State frontier = queue.pop();
+        State frontier;
         int max = 1000;
         int cur = 0;
         
-        while(!isWin(frontier, robot, target) && cur<max){
-            for (Robot robotName : frontier){
-                for (Direction d : Direction.values()){
-                    queue.add(frontier.getDecendant(board, robotName, d));
-                }
-            }
+        do {
             cur++;
             frontier = queue.pop();
-        }
+            if (isWin(frontier, robot, target)) {
+                break;
+            }
+            else {
+                for (Robot robotName : frontier){
+                    for (Direction d : Direction.values()){
+                        queue.add(frontier.getDecendant(board, robotName, d));
+                    }
+                }
+            }
+                    
+        } while (cur < max);
+        
         if (isWin(frontier,robot,target)){
+            //solution has been found, it is frontier
             target.setVisited();
-        }
-        
-        //solution has been found, it is frontier
-        
-        this.solution = new Solution(frontier, board);
+            this.solution = new Solution(frontier, board);
+        } 
     }
     
     private boolean isWin(State s, Robot robot, Target target){
-        return s.findRobot(robot).equals(target.getLocation());
+        Square robotLoc =  s.findRobot(robot);
+        Square targetLoc = target.getLocation();
+        return robotLoc.equals(targetLoc);
     }
     
     
