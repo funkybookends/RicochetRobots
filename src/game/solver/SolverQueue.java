@@ -14,11 +14,11 @@ import java.util.Collection;
  */
 public class SolverQueue {
     //private UniqueHeap<State> heap;
-    private UniqueSearchHeap<State> heap;
+    private PrioritySet<State> heap;
     
     protected SolverQueue(){
         //heap = new UniqueHeap<>();
-        heap = new UniqueSearchHeap<>();
+        heap = new PrioritySet<>();
     }
     
     protected void add(State newState){
