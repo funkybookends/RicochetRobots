@@ -67,7 +67,6 @@ class PrioritySet<Key> {
                 heap.set(max, temp);
                 k = max;
                 l = 2*k +1;
-                System.out.println("swapped");
             }
             else {
                 break;
@@ -92,7 +91,6 @@ class PrioritySet<Key> {
                 break;
             }
         }
-        test();
     }
     
     private void siftUp(){
@@ -123,7 +121,6 @@ class PrioritySet<Key> {
             assert(aGTb(l, i));
             assert(aGTb(r, i));
         }
-        System.out.println("Test passed");
     }
     
 }
