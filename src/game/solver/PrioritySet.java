@@ -14,8 +14,8 @@ import java.util.NoSuchElementException;
  * @author caspar
  */
 class PrioritySet<Key> {
-    private ArrayList<Key> heap;
-    private HashMap<Key, Integer> entries;
+    private final ArrayList<Key> heap;
+    private final HashMap<Key, Integer> entries;
         
     protected PrioritySet(){
         heap = new ArrayList<>();
